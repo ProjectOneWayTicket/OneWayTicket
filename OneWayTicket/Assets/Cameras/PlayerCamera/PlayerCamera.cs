@@ -2,6 +2,7 @@
 using System.Collections;
 using PACE.Framework;
 using Enums;
+using GamePlay.Interactable;
 
 public class PlayerCamera : BaseBehaviour
 {
@@ -35,33 +36,33 @@ public class PlayerCamera : BaseBehaviour
 
 	void Update ()
     {
-        _label = "";
+        //_label = "";
 
-        LayerMask noObstacleLayerMask = LayerMaskExtensions.LayerMaskExcludingLayers(Layer.NavObstacles);
+        //LayerMask noObstacleLayerMask = LayerMaskExtensions.LayerMaskExcludingLayers(Layer.NavObstacles);
 
-        ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out hit, 1000, noObstacleLayerMask))
-        {
-            if(hit.collider && hit.collider.gameObject.GetComponent<IInteractable>() != null)
-            {
-                _label = hit.collider.gameObject.GetComponent<IInteractable>().GetLabel();
-            }
-        }
+        //ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        //if (Physics.Raycast(ray, out hit, 1000, noObstacleLayerMask))
+        //{
+        //    if(hit.collider && hit.collider.gameObject.GetComponent<IInteractable>() != null)
+        //    {
+        //        _label = hit.collider.gameObject.GetComponent<IInteractable>().GetLabel();
+        //    }
+        //}
 
-        if (Input.GetButtonDown("RightMouseButton"))
-        {
-            if (selectedInteractable != null)
-                selectedInteractable = null;
-            else
-            {
-                selectedInteractable = null;
-                if (hit.collider && hit.collider.gameObject.GetComponent<IInteractable>() != null)
-                {
-                    if (hit.collider.gameObject.GetComponent<IInteractable>().IsActive())
-                        selectedInteractable = new SelectedInteractable(hit.collider.gameObject);
-                }
-            }
-        }
+        //if (Input.GetButtonDown("RightMouseButton"))
+        //{
+        //    if (selectedInteractable != null)
+        //        selectedInteractable = null;
+        //    else
+        //    {
+        //        selectedInteractable = null;
+        //        if (hit.collider && hit.collider.gameObject.GetComponent<IInteractable>() != null)
+        //        {
+        //            if (hit.collider.gameObject.GetComponent<IInteractable>().IsActive())
+        //                selectedInteractable = new SelectedInteractable(hit.collider.gameObject);
+        //        }
+        //    }
+        //}
 
     }
 

@@ -10,6 +10,8 @@ namespace GameGUI
     public interface IInGameGUI : IGUI
     {
         void UpdateItemHoverLabel(string label, Vector3 position);
+        void UpdateInteractionMenu(string label, Vector3 position);
+        void CloseInteractionMenu();
         void SetActive(bool active);
         bool IsActive();
     }

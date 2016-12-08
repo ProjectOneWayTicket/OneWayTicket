@@ -9,8 +9,7 @@ namespace Managers
     {
         MainMenu,
         InGameMenu,
-        Cutscene,
-        Roaming,
-        Inspecting
+        GamePlay,
+        Cutscene
     }
 }

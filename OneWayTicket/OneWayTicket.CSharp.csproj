@@ -13,13 +13,11 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>5.4.3f1</UnityVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <LangVersion Condition=" '$(VisualStudioVersion)' != '10.0' ">4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -165,10 +163,10 @@
     <Compile Include="Assets\AstarPathfindingProject\Generators\NodeClasses\GridNodeBase.cs" />
     <Compile Include="Assets\Cameras\PlayerCamera\PlayerCamera.cs" />
     <Compile Include="Assets\Scripts\GameScripts\Enums\LayerEnums.cs" />
-    <Compile Include="Assets\Scripts\GameScripts\GameGUI\IInGameMenuGUI.cs" />
     <Compile Include="Assets\Scripts\GameScripts\GameGUI\IInGameGUI.cs" />
-    <Compile Include="Assets\Scripts\GameScripts\GameGUI\InGameMenuGUI.cs" />
+    <Compile Include="Assets\Scripts\GameScripts\GameGUI\IInGameMenuGUI.cs" />
     <Compile Include="Assets\Scripts\GameScripts\GameGUI\InGameGUI.cs" />
+    <Compile Include="Assets\Scripts\GameScripts\GameGUI\InGameMenuGUI.cs" />
     <Compile Include="Assets\Scripts\GameScripts\GamePlay\Actors\ActorTimeManager.cs" />
     <Compile Include="Assets\Scripts\GameScripts\GamePlay\Actors\Player\IPlayer.cs" />
     <Compile Include="Assets\Scripts\GameScripts\GamePlay\Actors\Player\IPlayerAnimation.cs" />
@@ -186,15 +184,15 @@
     <Compile Include="Assets\Scripts\GameScripts\GamePlay\Controllers\SceneController\Scripts\ISceneController.cs" />
     <Compile Include="Assets\Scripts\GameScripts\GamePlay\Controllers\SceneController\Scripts\LocalizationController.cs" />
     <Compile Include="Assets\Scripts\GameScripts\GamePlay\Controllers\SceneController\Scripts\SceneController.cs" />
-    <Compile Include="Assets\Scripts\GameScripts\GamePlay\IInteractable.cs" />
-    <Compile Include="Assets\Scripts\GameScripts\GamePlay\Interactable.cs" />
+    <Compile Include="Assets\Scripts\GameScripts\GamePlay\Interactable\IInteractable.cs" />
+    <Compile Include="Assets\Scripts\GameScripts\GamePlay\Interactable\Interactable.cs" />
     <Compile Include="Assets\Scripts\GameScripts\GamePlay\Item.cs" />
     <Compile Include="Assets\Scripts\GameScripts\IO\InputStates.cs" />
-    <Compile Include="Assets\Scripts\GameScripts\Managers\GameManager.cs" />
-    <Compile Include="Assets\Scripts\GameScripts\Managers\InputState.cs" />
-    <Compile Include="Assets\Scripts\GameScripts\Managers\GameState.cs" />
     <Compile Include="Assets\Scripts\GameScripts\Managers\GameInputManager.cs" />
+    <Compile Include="Assets\Scripts\GameScripts\Managers\GameManager.cs" />
+    <Compile Include="Assets\Scripts\GameScripts\Managers\GameState.cs" />
     <Compile Include="Assets\Scripts\GameScripts\Managers\IGameManager.cs" />
+    <Compile Include="Assets\Scripts\GameScripts\Managers\InputState.cs" />
     <Compile Include="Assets\Scripts\GenericScripts\Extensions\EnumExtensions\EnumExtensions.cs" />
     <Compile Include="Assets\Scripts\GenericScripts\Extensions\GameObjectExtensions\FindObjectExtensions.cs" />
     <Compile Include="Assets\Scripts\GenericScripts\Extensions\LayerMaskExtensions\LayerMaskExtensions.cs" />
@@ -202,7 +200,6 @@
     <Compile Include="Assets\Scripts\GenericScripts\Extensions\StringExtensions\StringExtensions.cs" />
     <Compile Include="Assets\Scripts\GenericScripts\Singleton.cs" />
     <Compile Include="Assets\Scripts\PACE\Framework\BaseBehaviour\BaseBehaviour.cs" />
-    <Compile Include="Assets\Scripts\PACE\Framework\GameManager\GameState.cs" />
     <Compile Include="Assets\Scripts\PACE\Framework\GameManager\IPACEGameManager.cs" />
     <Compile Include="Assets\Scripts\PACE\Framework\GameManager\PACEGameManager.cs" />
     <Compile Include="Assets\Scripts\PACE\Framework\GameManager\SceneLoader.cs" />

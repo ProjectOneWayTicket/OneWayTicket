@@ -10,6 +10,7 @@ using UnityEngine;
 using GameGUI;
 using PACE.Framework.GameManager;
 using Gameplay.Actors;
+using GamePlay.Interactable;
 
 namespace Managers
 {
@@ -49,7 +50,7 @@ namespace Managers
             _inputManager = new GameInputManager(_player.GetInputListener(), _inputController.GetInputListener());
 
             //Initialize the game state
-            SetGameState(GameState.Roaming);
+            SetGameState(GameState.GamePlay);
         }
 
         void Update()
@@ -74,11 +75,8 @@ namespace Managers
                 case GameState.InGameMenu:
                     InGameMenu();
                     break;
-                case GameState.Roaming:
-                    Roaming();
-                    break;
-                case GameState.Inspecting:
-                    Inspecting();
+                case GameState.GamePlay:
+                    GamePlay();
                     break;
                 default:
                     Debug.Log("Error: No update logic for the GameState: " + state.ToString());
@@ -97,18 +95,21 @@ namespace Managers
                     _inputManager.SetInputState(InputState.InGameMenu);
                     PauseGame();
                     break;
-                case GameState.Roaming:
+                case GameState.GamePlay:
                     _inGameGUI.SetActive(true);
                     _inGameMenuGUI.SetActive(false);
                     _inputManager.SetInputState(InputState.PlayerControl);
                     ResumeGame();
                     break;
-                case GameState.Inspecting:
-                    break;
                 default:
                     Debug.Log("Error: No set game state logic for the GameState: " + state.ToString());
                     break;
             }
+        }
+
+        public GameState GetGameState()
+        {
+            return _gameState;
         }
 
         private void PauseGame()
@@ -121,20 +122,16 @@ namespace Managers
             ActorTimeManager.Instance.TimeManager.Resume();
         }
 
-        private void Roaming()
+        private void GamePlay()
         {
             if (_inputController.IsKeyPressed(InputKey.InGameMenu))
                 SetGameState(GameState.InGameMenu);
         }
 
-        private void Inspecting()
-        {
-
-        }
         private void InGameMenu()
         {
             if (_inputController.IsKeyPressed(InputKey.InGameMenu))
-                SetGameState(GameState.Roaming);
+                SetGameState(GameState.GamePlay);
         }
 
         public IInGameGUI GetInGameGUIInstance()
