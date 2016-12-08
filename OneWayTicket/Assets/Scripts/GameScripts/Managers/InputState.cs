@@ -5,12 +5,9 @@ using System.Text;
 
 namespace Managers
 {
-    public enum GameState
+    public enum InputState
     {
-        MainMenu,
         InGameMenu,
-        Cutscene,
-        Roaming,
-        Inspecting
+        PlayerControl
     }
 }

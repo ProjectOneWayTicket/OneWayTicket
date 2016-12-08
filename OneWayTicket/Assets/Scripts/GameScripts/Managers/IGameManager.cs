@@ -10,5 +10,6 @@ namespace Managers
     public interface IGameManager : IPACEGameManager
     {
         IInGameGUI GetInGameGUIInstance();
+        void ExitGame();
     }
 }

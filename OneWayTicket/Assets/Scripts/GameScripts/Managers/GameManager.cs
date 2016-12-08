@@ -9,6 +9,7 @@ using System.Text;
 using UnityEngine;
 using GameGUI;
 using PACE.Framework.GameManager;
+using Gameplay.Actors;
 
 namespace Managers
 {
@@ -20,6 +21,8 @@ namespace Managers
         private GameState _gameState;
         private IPlayer _player;
         private IInGameGUI _inGameGUI;
+        private IInGameMenuGUI _inGameMenuGUI;
+        private IInputController _inputController;
 
         //This method initializes the game on startup
         protected override void InitializeGame()
@@ -33,16 +36,20 @@ namespace Managers
 
             //Create InGameGUI
             _inGameGUI = gameObject.AddComponent<InGameGUI>();
+            _inGameMenuGUI = gameObject.AddComponent<InGameMenuGUI>();
+            _inGameGUI.SetActive(true);
+            _inGameMenuGUI.SetActive(false);
 
             //Create player
             GameObject player = Instantiate(Resources.Load("Actors/Player/Player", typeof(GameObject))) as GameObject;
             _player = player.GetComponent<Player>();
 
             //Setup the Input Manager
-            _inputManager = new GlobalInputManager(_player.GetInputListener());
+            _inputController = new InputController();
+            _inputManager = new GameInputManager(_player.GetInputListener(), _inputController.GetInputListener());
 
             //Initialize the game state
-            _gameState = GameState.Roaming;
+            SetGameState(GameState.Roaming);
         }
 
         void Update()
@@ -53,8 +60,10 @@ namespace Managers
 
         void OnGUI()
         {
-            if(_inGameGUI != null)
+            if(_inGameGUI != null && _inGameGUI.IsActive())
                 _inGameGUI.DrawGUI();
+            if (_inGameMenuGUI != null && _inGameMenuGUI.IsActive())
+                _inGameMenuGUI.DrawGUI();
         }
 
         //Call the appropriate update function for the current state
@@ -62,29 +71,89 @@ namespace Managers
         {
             switch (state)
             {
+                case GameState.InGameMenu:
+                    InGameMenu();
+                    break;
                 case GameState.Roaming:
                     Roaming();
                     break;
                 case GameState.Inspecting:
                     Inspecting();
                     break;
+                default:
+                    Debug.Log("Error: No update logic for the GameState: " + state.ToString());
+                    break;
             }
+        }
+
+        private void SetGameState(GameState state)
+        {
+            _gameState = state;
+            switch (state)
+            {
+                case GameState.InGameMenu:
+                    _inGameGUI.SetActive(false);
+                    _inGameMenuGUI.SetActive(true);
+                    _inputManager.SetInputState(InputState.InGameMenu);
+                    PauseGame();
+                    break;
+                case GameState.Roaming:
+                    _inGameGUI.SetActive(true);
+                    _inGameMenuGUI.SetActive(false);
+                    _inputManager.SetInputState(InputState.PlayerControl);
+                    ResumeGame();
+                    break;
+                case GameState.Inspecting:
+                    break;
+                default:
+                    Debug.Log("Error: No set game state logic for the GameState: " + state.ToString());
+                    break;
+            }
+        }
+
+        private void PauseGame()
+        {
+            ActorTimeManager.Instance.TimeManager.Pause();
+        }
+
+        private void ResumeGame()
+        {
+            ActorTimeManager.Instance.TimeManager.Resume();
         }
 
         private void Roaming()
         {
-
+            if (_inputController.IsKeyPressed(InputKey.InGameMenu))
+                SetGameState(GameState.InGameMenu);
         }
 
         private void Inspecting()
         {
 
         }
-
+        private void InGameMenu()
+        {
+            if (_inputController.IsKeyPressed(InputKey.InGameMenu))
+                SetGameState(GameState.Roaming);
+        }
 
         public IInGameGUI GetInGameGUIInstance()
         {
             return _inGameGUI;
+        }
+
+        public void ExitGame()
+        {
+            if (Application.isEditor)
+            {
+                #if UNITY_EDITOR
+                    UnityEditor.EditorApplication.isPlaying = false;
+                #endif
+            }
+            else
+            {
+                Application.Quit();
+            }
         }
 
     }

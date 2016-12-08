@@ -7,9 +7,8 @@ using UnityEngine;
 
 namespace GameGUI
 {
-    public interface IInGameGUI : IGUI
+    public interface IInGameMenuGUI : IGUI
     {
-        void UpdateItemHoverLabel(string label, Vector3 position);
         void SetActive(bool active);
         bool IsActive();
     }

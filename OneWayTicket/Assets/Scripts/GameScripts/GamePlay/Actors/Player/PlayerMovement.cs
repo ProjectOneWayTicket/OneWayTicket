@@ -10,7 +10,7 @@ namespace GamePlay.Actors.Player
         private Seeker _seeker;
         private CharacterController _characterController;
         private GameObject _playerObject;
-        private TimeManager _timeManager;
+        private ITimeManager _timeManager;
         private Vector3 _navTarget;
 
         private Vector3 targetPoint;
@@ -21,7 +21,7 @@ namespace GamePlay.Actors.Player
         public float repathRate = 0.1f;
         private float lastRepath = -9999;
 
-        public PlayerMovement(Seeker seeker, CharacterController characterController, GameObject playerObject, TimeManager timeManager)
+        public PlayerMovement(Seeker seeker, CharacterController characterController, GameObject playerObject, ITimeManager timeManager)
         {
             _seeker = seeker;
             _characterController = characterController;

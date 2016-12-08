@@ -128,6 +128,9 @@
 	<data name="String_DinerTable" xml:space="preserve">
 		<value>Diner Table</value>
 	</data>
+	<data name="String_ExitToWindows" xml:space="preserve">
+		<value>Exit To Windows</value>
+	</data>
 	<data name="String_LookAt{0}" xml:space="preserve">
 		<value>Look At {0}</value>
 	</data>

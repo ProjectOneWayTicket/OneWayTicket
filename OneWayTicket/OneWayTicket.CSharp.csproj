@@ -165,7 +165,9 @@
     <Compile Include="Assets\AstarPathfindingProject\Generators\NodeClasses\GridNodeBase.cs" />
     <Compile Include="Assets\Cameras\PlayerCamera\PlayerCamera.cs" />
     <Compile Include="Assets\Scripts\GameScripts\Enums\LayerEnums.cs" />
+    <Compile Include="Assets\Scripts\GameScripts\GameGUI\IInGameMenuGUI.cs" />
     <Compile Include="Assets\Scripts\GameScripts\GameGUI\IInGameGUI.cs" />
+    <Compile Include="Assets\Scripts\GameScripts\GameGUI\InGameMenuGUI.cs" />
     <Compile Include="Assets\Scripts\GameScripts\GameGUI\InGameGUI.cs" />
     <Compile Include="Assets\Scripts\GameScripts\GamePlay\Actors\ActorTimeManager.cs" />
     <Compile Include="Assets\Scripts\GameScripts\GamePlay\Actors\Player\IPlayer.cs" />
@@ -189,8 +191,9 @@
     <Compile Include="Assets\Scripts\GameScripts\GamePlay\Item.cs" />
     <Compile Include="Assets\Scripts\GameScripts\IO\InputStates.cs" />
     <Compile Include="Assets\Scripts\GameScripts\Managers\GameManager.cs" />
+    <Compile Include="Assets\Scripts\GameScripts\Managers\InputState.cs" />
     <Compile Include="Assets\Scripts\GameScripts\Managers\GameState.cs" />
-    <Compile Include="Assets\Scripts\GameScripts\Managers\GlobalInputManager.cs" />
+    <Compile Include="Assets\Scripts\GameScripts\Managers\GameInputManager.cs" />
     <Compile Include="Assets\Scripts\GameScripts\Managers\IGameManager.cs" />
     <Compile Include="Assets\Scripts\GenericScripts\Extensions\EnumExtensions\EnumExtensions.cs" />
     <Compile Include="Assets\Scripts\GenericScripts\Extensions\GameObjectExtensions\FindObjectExtensions.cs" />

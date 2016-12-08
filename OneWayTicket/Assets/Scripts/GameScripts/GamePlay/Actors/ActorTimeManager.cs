@@ -6,7 +6,7 @@ namespace Gameplay.Actors
     {
         protected ActorTimeManager() { }
         TimeManager _timeManager;
-        public TimeManager TimeManager
+        public ITimeManager TimeManager
         {
             get
             {

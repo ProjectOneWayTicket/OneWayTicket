@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using Managers;
 
 namespace PACE.IO
 {
@@ -42,6 +43,8 @@ namespace PACE.IO
                 }
             }
         }
+
+        public virtual void SetInputState(InputState state) { }
 
         //Get Mouse x-y position
         public Vector2 GetMousePosition()

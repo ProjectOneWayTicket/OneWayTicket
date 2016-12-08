@@ -7,7 +7,9 @@ namespace PACE.IO
         [Description("LeftMouseButton")]
         LeftMouseButton,
         [Description("RightMouseButton")]
-        RightMouseButton
+        RightMouseButton,
+        [Description("InGameMenu")]
+        InGameMenu
     }
 }
 

@@ -20,6 +20,7 @@ namespace GameGUI
             }
         }
 
+        private bool _isActive = true;
         private ItemHoverLabel _itemHoverLabel;
 
         void Update()
@@ -29,7 +30,9 @@ namespace GameGUI
 
         public void DrawGUI()
         {
-            //GUI.Button(new Rect(0, 0, 500, 500), "hello");
+            if (!_isActive)
+                return;
+
             if (_itemHoverLabel != null)
                 GUI.Button(new Rect(_itemHoverLabel.Position.x - 100, Screen.height - _itemHoverLabel.Position.y - 100, 200, 100), _itemHoverLabel.Label);
         }
@@ -38,6 +41,9 @@ namespace GameGUI
         {
             _itemHoverLabel = new ItemHoverLabel(label, position);
         }
+
+        public void SetActive(bool active) { _isActive = active; }
+        public bool IsActive() { return _isActive; }
 
     }
 }
